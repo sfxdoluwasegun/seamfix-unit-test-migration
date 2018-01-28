@@ -1,7 +1,5 @@
 package com.seamfix.tutorials.test.ejbcentric.ejb;
 
-
-
 import com.seamfix.tutorials.test.ejbcentric.model.Book;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,20 +12,11 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Stateless
 public class BookEJB {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
-
-    @PersistenceContext(unitName = "sampleJavaEEEJBCentricPU")
+    @PersistenceContext(unitName = "ejbTest")
     private EntityManager em;
-
-    // ======================================
-    // =          Business Methods          =
-    // ======================================
 
     public void create(Book entity) {
         em.persist(entity);
@@ -61,7 +50,6 @@ public class BookEJB {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         // Populate count
-
         CriteriaQuery<Long> countCriteria = builder.createQuery(Long.class);
         Root<Book> root = countCriteria.from(Book.class);
         countCriteria = countCriteria.select(builder.count(root)).where(getSearchPredicates(root, example));
@@ -74,7 +62,6 @@ public class BookEJB {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         // Populate pageItems
-
         CriteriaQuery<Book> criteria = builder.createQuery(Book.class);
         Root<Book> root = criteria.from(Book.class);
         TypedQuery<Book> query = em.createQuery(criteria.select(root).where(getSearchPredicates(root, example)));

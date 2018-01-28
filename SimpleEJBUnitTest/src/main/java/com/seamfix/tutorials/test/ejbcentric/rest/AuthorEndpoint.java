@@ -19,15 +19,9 @@ import java.util.List;
 @Path("/authors")
 public class AuthorEndpoint {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
     @Inject
     private AuthorEJB authorService;
 
-    // ======================================
-    // =          Business Methods          =
-    // ======================================
     @POST
     @Consumes("application/xml")
     public Response create(Author entity) {
@@ -36,7 +30,7 @@ public class AuthorEndpoint {
     }
 
     @DELETE
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     public Response deleteById(@PathParam("id") Long id) {
         Author deletableEntity = authorService.findById(id);
         if (deletableEntity == null) {
@@ -47,7 +41,7 @@ public class AuthorEndpoint {
     }
 
     @GET
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     @Produces("application/xml")
     public Response findById(@PathParam("id") Long id) {
         Author entity = authorService.findByIdWithRelations(id);
@@ -65,7 +59,7 @@ public class AuthorEndpoint {
     }
 
     @PUT
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     @Consumes("application/xml")
     public Response update(Author entity) {
         authorService.update(entity);

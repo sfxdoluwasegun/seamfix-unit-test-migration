@@ -11,14 +11,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-
 @Entity
 @XmlRootElement
 public class Author implements Serializable {
-
-    // ======================================
-    // =             Attributes             =
-    // ======================================
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +35,6 @@ public class Author implements Serializable {
     private String bio;
 
     private String twitter;
-
-    // ======================================
-    // =          Getters & Setters         =
-    // ======================================
 
     public Long getId() {
         return this.id;
@@ -93,10 +84,6 @@ public class Author implements Serializable {
         this.twitter = twitter;
     }
 
-    // =======================================
-    // = equals, hashCode & toString Methods =
-    // =======================================
-
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -125,14 +112,18 @@ public class Author implements Serializable {
     @Override
     public String toString() {
         String result = getClass().getSimpleName() + " ";
-        if (firstname != null && !firstname.trim().isEmpty())
+        if (firstname != null && !firstname.trim().isEmpty()) {
             result += "firstname: " + firstname;
-        if (surname != null && !surname.trim().isEmpty())
+        }
+        if (surname != null && !surname.trim().isEmpty()) {
             result += ", surname: " + surname;
-        if (bio != null && !bio.trim().isEmpty())
+        }
+        if (bio != null && !bio.trim().isEmpty()) {
             result += ", bio: " + bio;
-        if (twitter != null && !twitter.trim().isEmpty())
+        }
+        if (twitter != null && !twitter.trim().isEmpty()) {
             result += ", twitter: " + twitter;
+        }
         return result;
     }
 }

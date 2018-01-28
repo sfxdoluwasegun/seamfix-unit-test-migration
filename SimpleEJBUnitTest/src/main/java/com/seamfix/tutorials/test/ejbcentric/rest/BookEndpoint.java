@@ -16,21 +16,14 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 import java.util.List;
 
-/**
- * @author Antonio Goncalves http://www.antoniogoncalves.org --
- */
+
 @Path("/books")
 public class BookEndpoint {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
+  
     @Inject
     private BookEJB bookService;
 
-    // ======================================
-    // =          Business Methods          =
-    // ======================================
     @POST
     @Consumes("application/xml")
     public Response create(Book entity) {
@@ -39,7 +32,7 @@ public class BookEndpoint {
     }
 
     @DELETE
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     public Response deleteById(@PathParam("id") Long id) {
         Book deletableEntity = bookService.findById(id);
         if (deletableEntity == null) {
@@ -50,7 +43,7 @@ public class BookEndpoint {
     }
 
     @GET
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     @Produces("application/xml")
     public Response findById(@PathParam("id") Long id) {
         Book entity = bookService.findByIdWithRelations(id);
@@ -68,7 +61,7 @@ public class BookEndpoint {
     }
 
     @PUT
-    @Path("/{id:[0-9][0-9]*}")
+    @Path("/{id}")
     @Consumes("application/xml")
     public Response update(Book entity) {
         bookService.update(entity);

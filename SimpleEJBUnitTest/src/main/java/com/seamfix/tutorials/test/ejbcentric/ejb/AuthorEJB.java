@@ -1,7 +1,5 @@
 package com.seamfix.tutorials.test.ejbcentric.ejb;
 
-
-
 import com.seamfix.tutorials.test.ejbcentric.model.Author;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,20 +12,11 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Stateless
 public class AuthorEJB {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
-
-    @PersistenceContext(unitName = "sampleJavaEEEJBCentricPU")
+    @PersistenceContext(unitName = "ejbTest")
     private EntityManager em;
-
-    // ======================================
-    // =          Business Methods          =
-    // ======================================
 
     public void create(Author entity) {
         em.persist(entity);
@@ -86,7 +75,6 @@ public class AuthorEJB {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         // Populate count
-
         CriteriaQuery<Long> countCriteria = builder.createQuery(Long.class);
         Root<Author> root = countCriteria.from(Author.class);
         countCriteria = countCriteria.select(builder.count(root)).where(getSearchPredicates(root, example));
@@ -99,7 +87,6 @@ public class AuthorEJB {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         // Populate pageItems
-
         CriteriaQuery<Author> criteria = builder.createQuery(Author.class);
         Root<Author> root = criteria.from(Author.class);
         TypedQuery<Author> query = em.createQuery(criteria.select(root).where(getSearchPredicates(root, example)));

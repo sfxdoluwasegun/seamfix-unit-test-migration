@@ -23,9 +23,6 @@ public class Book implements Serializable {
 
     public Book() {
     }
-    // ======================================
-    // =             Attributes             =
-    // ======================================
 
     public Book(long id, String isbn, String title, Float price, Integer nbOfPages) {
         this.isbn = isbn;
@@ -68,9 +65,6 @@ public class Book implements Serializable {
     @OneToMany
     private Set<Author> authors = new HashSet<>();
 
-    // ======================================
-    // =          Getters & Setters         =
-    // ======================================
     public Long getId() {
         return this.id;
     }
@@ -175,9 +169,6 @@ public class Book implements Serializable {
         this.authors = authors;
     }
 
-    // =======================================
-    // = equals, hashCode & toString Methods =
-    // =======================================
     @Override
     public boolean equals(Object that) {
         if (this == that) {

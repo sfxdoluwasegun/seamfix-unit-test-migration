@@ -11,6 +11,8 @@
         <module>SimpleUnitTestExample</module>
         <module>SimpleEJBUnitTest</module>
         <module>SpringUnitTestExample</module>
+		<module>seamfix-jee-test-framework</module>
+		
       
     </modules>
     
