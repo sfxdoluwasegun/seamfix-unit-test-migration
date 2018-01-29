@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee.runner;
+package com.seamfix.test.tutorial.jee.runner;
 
 import org.hibernate.cfg.AvailableSettings;
 

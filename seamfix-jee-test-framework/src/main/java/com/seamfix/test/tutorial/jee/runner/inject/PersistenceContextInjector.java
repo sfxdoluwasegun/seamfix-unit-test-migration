@@ -1,7 +1,7 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
-import com.seamfix.tutorial.test.jee.runner.EjbWithMockitoRunnerException;
-import com.seamfix.tutorial.test.jee.runner.SingletonEntityManager;
+import com.seamfix.test.tutorial.jee.runner.EjbWithMockitoRunnerException;
+import com.seamfix.test.tutorial.jee.runner.SingletonEntityManager;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.Field;

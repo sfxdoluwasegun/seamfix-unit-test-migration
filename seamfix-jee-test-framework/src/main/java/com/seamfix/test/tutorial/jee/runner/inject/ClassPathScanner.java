@@ -1,6 +1,6 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
-import com.seamfix.tutorial.test.jee.runner.EjbWithMockitoRunnerException;
+import com.seamfix.test.tutorial.jee.runner.EjbWithMockitoRunnerException;
 import junit.framework.AssertionFailedError;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,9 +1,9 @@
-package com.seamfix.tutorial.test.jee;
+package com.seamfix.test.tutorial.jee;
 
-import com.seamfix.tutorial.test.jee.runner.DependencyInjector;
-import com.seamfix.tutorial.test.jee.runner.inject.InjectionUtils;
-import com.seamfix.tutorial.test.jee.runner.jaxrs.JaxRsException;
-import com.seamfix.tutorial.test.jee.runner.jaxrs.RestRequest;
+import com.seamfix.test.tutorial.jee.runner.DependencyInjector;
+import com.seamfix.test.tutorial.jee.runner.inject.InjectionUtils;
+import com.seamfix.test.tutorial.jee.runner.jaxrs.JaxRsException;
+import com.seamfix.test.tutorial.jee.runner.jaxrs.RestRequest;
 import io.undertow.Undertow;
 import io.undertow.security.idm.Account;
 import io.undertow.security.idm.Credential;

@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee;
+package com.seamfix.test.tutorial.jee;
 
 import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
