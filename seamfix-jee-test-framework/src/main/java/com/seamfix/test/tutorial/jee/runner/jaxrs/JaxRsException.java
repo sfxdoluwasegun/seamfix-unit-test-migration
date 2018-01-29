@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee.runner.jaxrs;
+package com.seamfix.test.tutorial.jee.runner.jaxrs;
 
 public class JaxRsException extends RuntimeException {
     public JaxRsException(String message) {

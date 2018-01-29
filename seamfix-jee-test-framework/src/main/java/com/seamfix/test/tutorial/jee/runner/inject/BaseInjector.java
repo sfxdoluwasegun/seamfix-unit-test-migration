@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

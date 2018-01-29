@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
 import javax.inject.Inject;
 import java.lang.annotation.Annotation;

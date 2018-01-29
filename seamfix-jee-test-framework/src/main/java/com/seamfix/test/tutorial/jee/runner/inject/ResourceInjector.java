@@ -1,6 +1,6 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
-import com.seamfix.tutorial.test.jee.runner.SingletonDataSource;
+import com.seamfix.test.tutorial.jee.runner.SingletonDataSource;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.sql.DataSource;

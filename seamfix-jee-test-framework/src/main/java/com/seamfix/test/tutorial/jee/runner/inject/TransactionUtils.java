@@ -1,6 +1,6 @@
-package com.seamfix.tutorial.test.jee.runner.inject;
+package com.seamfix.test.tutorial.jee.runner.inject;
 
-import com.seamfix.tutorial.test.jee.runner.SingletonEntityManager;
+import com.seamfix.test.tutorial.jee.runner.SingletonEntityManager;
 import org.junit.Assert;
 import javax.ejb.ApplicationException;
 import javax.persistence.EntityTransaction;

@@ -1,4 +1,4 @@
-package com.seamfix.tutorial.test.jee;
+package com.seamfix.test.tutorial.jee;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.hamcrest.*;

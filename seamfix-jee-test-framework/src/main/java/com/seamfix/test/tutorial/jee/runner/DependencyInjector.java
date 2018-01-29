@@ -1,6 +1,11 @@
-package com.seamfix.tutorial.test.jee.runner;
+package com.seamfix.test.tutorial.jee.runner;
 
-import com.seamfix.tutorial.test.jee.runner.inject.*;
+import com.seamfix.test.tutorial.jee.runner.inject.EjbInjector;
+import com.seamfix.test.tutorial.jee.runner.inject.PersistenceContextInjector;
+import com.seamfix.test.tutorial.jee.runner.inject.Injector;
+import com.seamfix.test.tutorial.jee.runner.inject.InjectInjector;
+import com.seamfix.test.tutorial.jee.runner.inject.MockRegistrar;
+import com.seamfix.test.tutorial.jee.runner.inject.ResourceInjector;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

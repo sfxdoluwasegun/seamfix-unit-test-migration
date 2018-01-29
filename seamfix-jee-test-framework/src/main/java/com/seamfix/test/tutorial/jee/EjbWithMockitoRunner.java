@@ -1,7 +1,7 @@
-package com.seamfix.tutorial.test.jee;
+package com.seamfix.test.tutorial.jee;
 
-import com.seamfix.tutorial.test.jee.runner.DependencyInjector;
-import com.seamfix.tutorial.test.jee.runner.inject.TransactionUtils;
+import com.seamfix.test.tutorial.jee.runner.DependencyInjector;
+import com.seamfix.test.tutorial.jee.runner.inject.TransactionUtils;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.manipulation.Filter;
