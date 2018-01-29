@@ -37,6 +37,13 @@ public class BookEJB {
         return entity;
     }
 
+    public Book findByIsbn(String isbn) {
+        TypedQuery<Book> findByIdQuery = em.createQuery("SELECT DISTINCT b FROM Book b LEFT JOIN FETCH b.authors WHERE b.isbn = :isbn ORDER BY b.id", Book.class);
+        findByIdQuery.setParameter("isbn", isbn);
+        Book entity = findByIdQuery.getSingleResult();
+        return entity;
+    }
+
     public List<Book> findAll() {
         return em.createQuery("SELECT DISTINCT b FROM Book b LEFT JOIN FETCH b.authors ORDER BY b.id", Book.class).getResultList();
     }

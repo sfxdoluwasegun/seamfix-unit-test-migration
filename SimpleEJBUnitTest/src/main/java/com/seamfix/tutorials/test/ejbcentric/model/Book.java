@@ -14,19 +14,25 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.Table;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
 
 @Entity
 @XmlRootElement
+//@Data @AllArgsConstructor @NoArgsConstructor
+@Table(name = "book")
 public class Book implements Serializable {
 
     public Book() {
     }
 
-    public Book(long id, String isbn, String title, Float price, Integer nbOfPages) {
+    public Book(String isbn, String title, Float price, Integer nbOfPages) {
         this.isbn = isbn;
-        this.id = id;
         this.title = title;
         this.price = price;
         this.nbOfPages = nbOfPages;
@@ -62,8 +68,8 @@ public class Book implements Serializable {
     private String imageURL;
     private String pageURL;
 
-    @OneToMany
-    private Set<Author> authors = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book", cascade = CascadeType.ALL)
+    private Set<Author> authors;
 
     public Long getId() {
         return this.id;

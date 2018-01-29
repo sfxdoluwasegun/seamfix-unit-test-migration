@@ -10,10 +10,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @XmlRootElement
 public class Author implements Serializable {
+
+    public Author(Book book, String firstname, String surname, String bio, String twitter) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.bio = bio;
+        this.twitter = twitter;
+        this.book = book;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +44,19 @@ public class Author implements Serializable {
     @Size(max = 2000)
     private String bio;
 
+    @ManyToOne
+    @JoinColumn(name = "BOOK_ID", nullable = false)
+    private Book book;
+
     private String twitter;
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public Long getId() {
         return this.id;
