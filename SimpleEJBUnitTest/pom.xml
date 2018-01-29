@@ -13,9 +13,9 @@
     </properties>
     <dependencies>
         <dependency>        
-            <groupId>com.seamfix.tutorial</groupId>
+            <groupId>com.seamfix.test</groupId>
             <artifactId>jee-test</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.2-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <!-- Java EE -->
@@ -23,6 +23,13 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
+        </dependency>
+        
+          <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.14.2</version>
+            <scope>provided</scope>
         </dependency>
             
        
