@@ -9,9 +9,11 @@
     <modules>
         
         <module>SimpleUnitTestExample</module>
+        <module>seamfix-jee-model</module>
         <module>SimpleEJBUnitTest</module>
         <module>SpringUnitTestExample</module>
-		<module>seamfix-jee-test-framework</module>
+        <module>seamfix-jee-test-framework</module>
+		
 		
 		
       
