@@ -29,6 +29,7 @@ public class SingletonEntityManager {
 
             EntityManagerFactory emf = Persistence.createEntityManagerFactory(PersistenceXml.getInstnace().getPersistenceUnitName(), config);
             entityManager = emf.createEntityManager();
+
         }
 
         return entityManager;

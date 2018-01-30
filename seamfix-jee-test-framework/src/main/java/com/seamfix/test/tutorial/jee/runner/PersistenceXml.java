@@ -18,6 +18,8 @@ public class PersistenceXml {
 
     private final String connectionUrl;
     private final String persistenceUnitName;
+    private final String user;
+    private final String password;
 
     private PersistenceXml() {
         Document document;
@@ -35,6 +37,8 @@ public class PersistenceXml {
 
             connectionUrl = extractConnectionURL(document, xPath);
             persistenceUnitName = (String) xPath.evaluate("//*[local-name()='persistence-unit']/@name", document, XPathConstants.STRING);
+            user = (String) xPath.evaluate("//*[local-name()='property' and @name='hibernate.connection.username']/@value", document, XPathConstants.STRING);
+            password = (String) xPath.evaluate("//*[local-name()='property' and @name='hibernate.connection.password']/@value", document, XPathConstants.STRING);
 
         } catch (XPathExpressionException e) {
             throw new EjbWithMockitoRunnerException("Failed initializing XPath expressions");
@@ -48,9 +52,9 @@ public class PersistenceXml {
             connectionURL = getJPAURL(document, xPath);
         }
 
-        if (StringUtils.isBlank(connectionURL)){
-            final String errorMessage = "We could not find the JPA/Hibernate jdbc URL. " +
-                    "\n Did you set the hibernate.connection.url or the javax.persistence.jdbc.url attribute in the persistence.xml file?";
+        if (StringUtils.isBlank(connectionURL)) {
+            final String errorMessage = "We could not find the JPA/Hibernate jdbc URL. "
+                    + "\n Did you set the hibernate.connection.url or the javax.persistence.jdbc.url attribute in the persistence.xml file?";
             throw new IllegalArgumentException(errorMessage);
         }
 
