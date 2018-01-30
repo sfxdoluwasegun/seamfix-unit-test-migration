@@ -38,6 +38,7 @@ public class EjbWithMockitoRunner extends Runner implements Filterable {
 
                 // Rollback any existing transaction before starting a new one
                 TransactionUtils.rollbackTransaction();
+                // End any existing transaction before starting a new one
                 TransactionUtils.endTransaction(true);
 
                 // Start a new transaction

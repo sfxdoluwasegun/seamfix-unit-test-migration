@@ -24,7 +24,7 @@ public class SingletonDataSource {
 
     private SingletonDataSource() {
         try {
-            Connection connection = DriverManager.getConnection(PersistenceXml.getInstnace().getConnectionUrl());
+            Connection connection = DriverManager.getConnection(PersistenceXml.getInstnace().getConnectionUrl(), PersistenceXml.getInstnace().getUser(), PersistenceXml.getInstnace().getPassword());
             connection.setAutoCommit(false);
             dataSource = (DataSource) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{DataSource.class}, new NotClosableDataSource(connection));
             LogManager.getLogger(SingletonDataSource.class).info("Data source initialized successfully");
