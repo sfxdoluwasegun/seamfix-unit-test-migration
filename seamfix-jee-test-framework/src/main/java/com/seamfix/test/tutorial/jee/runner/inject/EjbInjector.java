@@ -2,6 +2,7 @@ package com.seamfix.test.tutorial.jee.runner.inject;
 
 import com.seamfix.test.tutorial.jee.runner.DependencyInjector;
 import com.seamfix.test.tutorial.jee.runner.EjbWithMockitoRunnerException;
+import com.seamfix.test.tutorial.jee.runner.SingletonMongoDbConncetor;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -21,6 +22,7 @@ public class EjbInjector extends BaseInjector {
     @Override
     public <T> void doInject(T target, Field field) {
         Object ejb;
+         Class<?> fieldClassReq = field.getType();
 
         // If the field's class is a singleton or a stateless-session, than it isn't expected to implement any interface
         // so the class itself is registered
@@ -28,21 +30,18 @@ public class EjbInjector extends BaseInjector {
             Class<?> fieldClass = field.getType();
 
             // Search for an instance of this interface or a mock
-
             ejb = findInstanceByClass(fieldClass);
 
             // If none was found, instantiate a new one and register the it in the various caches
             if (ejb == null) {
                 ejb = instantiateSingletonAndCache(fieldClass);
             }
-        }
 
-        else {
+        } else {
             // Get class of the field  and make sure it is an interface
             Class<?> fieldClass = InjectionUtils.getFieldInterface(target, field);
 
             // Search for an instance of this interface or a mock
-
             ejb = findInstanceByClass(fieldClass);
 
             // If none was found, instantiate a new one and register the it in the various caches
@@ -52,7 +51,12 @@ public class EjbInjector extends BaseInjector {
         }
 
         // Assign the EJB to the field
-        InjectionUtils.assignObjectToField(target, field, ejb);
+        if ((fieldClassReq.getSimpleName().equalsIgnoreCase("MongoProducer"))) {
+              InjectionUtils.assignObjectToField(target, field, SingletonMongoDbConncetor.getInstnace());
+        } else {
+            InjectionUtils.assignObjectToField(target, field, ejb);
+        }
+
     }
 
     private Object instantiateAndCache(Class<?> fieldClass) {
