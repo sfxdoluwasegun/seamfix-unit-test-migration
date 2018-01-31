@@ -19,7 +19,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     </persistence-unit>-->
     
     <persistence-unit name="ejbTest">
-        <jar-file>target/classes</jar-file>
+        <class>com.seamfix.tutorials.test.ejbcentric.model.Author</class>
+        <class>com.seamfix.tutorials.test.ejbcentric.model.Book</class>
         <properties>
             <property name="hibernate.archive.autodetection" value="class" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
