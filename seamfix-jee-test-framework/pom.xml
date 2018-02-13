@@ -28,7 +28,12 @@
             <email>uonuoha@seamfix.com</email>
         </developer>
     </developers>
-
+    <distributionManagement>
+        <snapshotRepository>
+            <id>deployment</id>
+            <url>http://singlewindow.seamfix.com:7997/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -162,7 +167,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-             <version>3.6.2</version>
+            <version>3.6.2</version>
             <scope>provided</scope>
         </dependency>
 

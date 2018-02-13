@@ -51,14 +51,14 @@ public class SingletonMongoDbConncetor {
 
         try {
 
-            mongoClient = getConnectorClient();
+            mongoClient = getMongoClient();
         } catch (Exception e) {
             throw new EjbWithMockitoRunnerException("Failed connecting to the mongoDB", e);
         }
 
     }
 
-    private MongoClient getConnectorClient() throws Exception {
+    public MongoClient getMongoClient() throws Exception {
         MongoClient innerMongoClient;
         if (Boolean.valueOf(monngoDbProperties.getProperty("test.mongodb.use.replica", "false"))) {
             //connect to mongodb replica set
@@ -78,11 +78,11 @@ public class SingletonMongoDbConncetor {
 
     private MongoClientOptions getMongoOptions() {
         MongoClientOptions.Builder optionsBuilder = MongoClientOptions.builder();
-        optionsBuilder.connectionsPerHost(Integer.parseInt(monngoDbProperties.getProperty("mongodb.connectionsPerHost")));
-        optionsBuilder.connectTimeout(Integer.parseInt(monngoDbProperties.getProperty("mongodb.connectTimeout")));
-        optionsBuilder.cursorFinalizerEnabled(Boolean.valueOf(monngoDbProperties.getProperty("mongodb.cursorFinalizerEnabled")));
-        optionsBuilder.maxWaitTime(Integer.parseInt(monngoDbProperties.getProperty("mongodb.maxWaitTime")));
-        optionsBuilder.socketTimeout(Integer.parseInt(monngoDbProperties.getProperty("mongodb.socketTimeout")));
+        optionsBuilder.connectionsPerHost(Integer.parseInt(monngoDbProperties.getProperty("test.mongodb.connectionsPerHost")));
+        optionsBuilder.connectTimeout(Integer.parseInt(monngoDbProperties.getProperty("test.mongodb.connectTimeout")));
+        optionsBuilder.cursorFinalizerEnabled(Boolean.valueOf(monngoDbProperties.getProperty("test.mongodb.cursorFinalizerEnabled")));
+        optionsBuilder.maxWaitTime(Integer.parseInt(monngoDbProperties.getProperty("test.mongodb.maxWaitTime")));
+        optionsBuilder.socketTimeout(Integer.parseInt(monngoDbProperties.getProperty("test.mongodb.socketTimeout")));
         return optionsBuilder.build();
     }
 
