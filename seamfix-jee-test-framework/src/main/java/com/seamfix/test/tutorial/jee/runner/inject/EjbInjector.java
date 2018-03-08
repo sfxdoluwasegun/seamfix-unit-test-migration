@@ -2,7 +2,7 @@ package com.seamfix.test.tutorial.jee.runner.inject;
 
 import com.seamfix.test.tutorial.jee.runner.DependencyInjector;
 import com.seamfix.test.tutorial.jee.runner.EjbWithMockitoRunnerException;
-import com.seamfix.test.tutorial.jee.runner.SingletonMongoDbConncetor;
+import com.seamfix.test.tutorial.jee.runner.SingletonNoSqlDataSource;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -51,8 +51,8 @@ public class EjbInjector extends BaseInjector {
         }
 
         // Assign the EJB to the field
-        if ((fieldClassReq.getSimpleName().equalsIgnoreCase("MongoProducer"))) {
-              InjectionUtils.assignObjectToField(target, field, SingletonMongoDbConncetor.getInstnace());
+        if ((fieldClassReq.getSimpleName().equalsIgnoreCase("NoSqlDataSource"))) {
+              InjectionUtils.assignObjectToField(target, field, SingletonNoSqlDataSource.getNoSqlDataSource());
         } else {
             InjectionUtils.assignObjectToField(target, field, ejb);
         }

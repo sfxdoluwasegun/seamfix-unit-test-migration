@@ -36,10 +36,11 @@ public class SingletonDataSource {
     }
 
     /**
-     * A DataSource proxy that always return the same JDBC connection which doesn't close when "close" is called.
-     * This is needed so JDBC calls will be using the same connection and transaction as JPA calls.
-     * Note that the connection returned from the data-source is never closed as it is up to the entity manager to
-     * close its connection
+     * A DataSource proxy that always return the same JDBC connection which
+     * doesn't close when "close" is called. This is needed so JDBC calls will
+     * be using the same connection and transaction as JPA calls. Note that the
+     * connection returned from the data-source is never closed as it is up to
+     * the entity manager to close its connection
      */
     private class NotClosableDataSource implements InvocationHandler {
 
@@ -51,13 +52,9 @@ public class SingletonDataSource {
         public Object invoke(Object proxy, Method method, Object... args) throws Throwable {
             if ("getConnection".equals(method.getName())) {
                 return getNotClosableConnection();
-            }
-
-            else if ("toString".equals(method.getName())) {
+            } else if ("toString".equals(method.getName())) {
                 return "NotClosableDataSource";
-            }
-
-            else {
+            } else {
                 throw new IllegalArgumentException("Unsupported method: " + method.getName());
             }
         }
@@ -69,7 +66,8 @@ public class SingletonDataSource {
     }
 
     /**
-     * A JDBC Connection proxy that ignores calls to close() - used when the connection is retrieved from the entity manager.
+     * A JDBC Connection proxy that ignores calls to close() - used when the
+     * connection is retrieved from the entity manager.
      */
     private class NotClosableConnectionProxy implements InvocationHandler {
 
@@ -83,13 +81,9 @@ public class SingletonDataSource {
         public Object invoke(Object proxy, Method method, Object... args) throws Throwable {
             if ("close".equals(method.getName())) {
                 return null;
-            }
-
-            else if ("toString".equals(method.getName())) {
+            } else if ("toString".equals(method.getName())) {
                 return "NotClosableConnectionProxy{" + delegate + "} - " + (delegate.isClosed() ? "closed" : "opened");
-            }
-
-            else {
+            } else {
                 return method.invoke(delegate, args);
             }
         }
