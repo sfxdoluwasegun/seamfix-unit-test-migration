@@ -1,6 +1,6 @@
 package com.seamfix.test.tutorial.jee.runner.inject;
 
-import com.seamfix.test.tutorial.jee.runner.SingletonMongoDbConncetor;
+import com.seamfix.test.tutorial.jee.runner.SingletonNoSqlDataSource;
 import javax.inject.Inject;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -16,8 +16,8 @@ public class InjectInjector extends BaseInjector {
     @Override
     public <T> void doInject(T target, Field field) {
         Class<?> fieldClass = field.getType();
-        if (fieldClass.getSimpleName().equalsIgnoreCase("MongoProducer")) {
-            InjectionUtils.assignObjectToField(target, field, SingletonMongoDbConncetor.getInstnace());
+        if (fieldClass.getSimpleName().equalsIgnoreCase("NoSqlDataSource")) {
+            InjectionUtils.assignObjectToField(target, field, SingletonNoSqlDataSource.getNoSqlDataSource());
         } else {
             final Object objectToInject = findInstanceByClass(field.getType());
             InjectionUtils.assignObjectToField(target, field, objectToInject);
