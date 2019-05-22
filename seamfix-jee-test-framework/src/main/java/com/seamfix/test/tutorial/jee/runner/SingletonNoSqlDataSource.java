@@ -1,6 +1,6 @@
 package com.seamfix.test.tutorial.jee.runner;
 
-import com.sf.bio.common.ds.NoSqlDataSource;
+
 import lombok.Data;
 
 /**

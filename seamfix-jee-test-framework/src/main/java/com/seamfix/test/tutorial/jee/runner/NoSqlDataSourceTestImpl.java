@@ -11,8 +11,6 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
-import com.sf.bio.common.ds.NoSqlDataSource;
-import com.sf.bio.common.exception.BioCommonException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -64,7 +62,7 @@ public class NoSqlDataSourceTestImpl implements NoSqlDataSource {
             morphia.mapPackage(monngoDbProperties.getProperty("test.package.registry"));
             mongoDataStore = morphia.createDatastore(mongoClient, monngoDbProperties.getProperty("test.app.database.name"));
 
-        } catch (BioCommonException | UnsupportedEncodingException e) {
+        } catch (Exception e) {
             throw new EjbWithMockitoRunnerException("Failed connecting to the mongoDB", e);
         }
 
@@ -101,7 +99,7 @@ public class NoSqlDataSourceTestImpl implements NoSqlDataSource {
         return mongoClient;
     }
 
-    private MongoClient getAppMogoDbClient() throws BioCommonException, UnsupportedEncodingException {
+    private MongoClient getAppMogoDbClient() throws  UnsupportedEncodingException {
         MongoClient innerMongoClient;
         if (Boolean.valueOf(monngoDbProperties.getProperty("test.mongodb-use-replica-set", "false"))) {
             //connect to mongodb replica set

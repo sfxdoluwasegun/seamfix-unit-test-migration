@@ -1,6 +1,5 @@
 package com.seamfix.tutorials.test.springmvc.dao;
 
-import com.seamfix.tutorials.test.springmvc.dao.EmployeeDao;
 import java.math.BigDecimal;
 
 import org.dbunit.dataset.IDataSet;

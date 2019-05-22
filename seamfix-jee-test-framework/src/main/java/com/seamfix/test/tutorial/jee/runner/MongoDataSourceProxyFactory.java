@@ -9,7 +9,7 @@ package com.seamfix.test.tutorial.jee.runner;
  *
  * @author Godswill
  */
-import com.sf.bio.common.ds.NoSqlDataSource;
+
 import java.lang.reflect.Proxy;
 
 public class MongoDataSourceProxyFactory {
